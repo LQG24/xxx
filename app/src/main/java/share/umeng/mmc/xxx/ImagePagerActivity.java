@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
 /**
  * Created by abc on 2016/8/22.
  */
@@ -20,7 +21,7 @@ public class ImagePagerActivity  extends FragmentActivity {
     public static final String EXTRA_IMAGE_INDEX = "image_index";
     public static final String EXTRA_IMAGE_URLS = "image_urls";
 
-    private ViewPager mPager;
+    private CusViewPager mPager;
     private int pagerPosition;
     private TextView indicator;
     @Override
@@ -30,7 +31,7 @@ public class ImagePagerActivity  extends FragmentActivity {
         pagerPosition = getIntent().getIntExtra(EXTRA_IMAGE_INDEX,0);
         ArrayList<String> urls = getIntent().getStringArrayListExtra(EXTRA_IMAGE_URLS);
 
-        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager = (CusViewPager) findViewById(R.id.pager);
         ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(getSupportFragmentManager(),urls);
         mPager.setAdapter(imagePagerAdapter);
 
