@@ -19,14 +19,14 @@ import android.widget.Scroller;
 
 /**
  * Created by liuheng on 2015/6/21.
- * 
- *  增加长按事件
+ *
+ * 20151123 bj 增加长按事件
  * <p></p>
  *
  */
 public class PhotoView extends ImageView {
 
-    private final static int ANIMA_DURING = 300; 
+    private final static int ANIMA_DURING = 300;
     private final static float MAX_SCALE = 2.5f;
     private int MAX_OVER_SCROLL = 0;
     private int MAX_FLING_OVER_SCROLL = 0;
@@ -630,7 +630,7 @@ public class PhotoView extends ImageView {
             }
         }
     };
-    
+
     private Runnable mLongClickRunnable = new Runnable() {
         @Override
         public void run() {
@@ -650,8 +650,8 @@ public class PhotoView extends ImageView {
             removeCallbacks(mLongClickRunnable);
             return super.onDown(e);
         }
-        
-        
+
+
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
             if (hasMultiTouch) return false;
@@ -736,7 +736,7 @@ public class PhotoView extends ImageView {
             return false;
         }
         public void onLongPress(MotionEvent e) {
-        	postDelayed(mLongClickRunnable, 500);
+            postDelayed(mLongClickRunnable, 500);
             //return false;
         }
 

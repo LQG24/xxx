@@ -25,6 +25,7 @@ import photoview.PhotoViewAttacher;
 public class ImageFragment extends Fragment{
 	private String mImageUrl;
 	private PhotoView mImageView;
+//	private ImageView mImageView;
 	private ProgressBar progressBar;
 //	    private PhotoViewAttacher mAttacher;
 	public static Fragment newInstance(String url) {
@@ -47,8 +48,9 @@ public class ImageFragment extends Fragment{
 		View view = inflater.inflate(R.layout.image_detail_fragment,container,false);
 		mImageView = (PhotoView) view.findViewById(R.id.image);
 		mImageView.enable();
+		/*mImageView = (ImageView) view.findViewById(R.id.image);
 
-      /*  mAttacher = new PhotoViewAttacher(mImageView);
+        mAttacher = new PhotoViewAttacher(mImageView);
 
         mAttacher.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
 
@@ -56,8 +58,7 @@ public class ImageFragment extends Fragment{
             public void onPhotoTap(View arg0, float arg1, float arg2) {
                 getActivity().finish();
             }
-        });
-*/
+        });*/
 		progressBar = (ProgressBar) view.findViewById(R.id.loading);
 		return view;
 	}

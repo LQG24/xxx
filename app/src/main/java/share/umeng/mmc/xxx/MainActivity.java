@@ -1,7 +1,10 @@
 package share.umeng.mmc.xxx;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -18,6 +21,17 @@ public class MainActivity extends AppCompatActivity {
         listView=(ListView) findViewById(R.id.listview);
         initData();
         listView.setAdapter(new ListItemAdaper(this,itemEntities));
+        PackageManager manager = this.getPackageManager();
+        PackageInfo info = null;
+        int version = 0;
+        try {
+            info = manager.getPackageInfo(getApplication().getPackageName(), 0);
+            version = info.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        Log.i("version",version+"");
+
     }
 
     private void initData() {
