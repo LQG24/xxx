@@ -11,7 +11,7 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/app_name"
         android:visibility="gone"
-        android:scaleType="centerCrop" />
+        />
    <!-- <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"

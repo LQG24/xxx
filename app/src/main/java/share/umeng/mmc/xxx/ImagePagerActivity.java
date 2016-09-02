@@ -47,12 +47,12 @@ public class ImagePagerActivity extends FragmentActivity {
         urls = getIntent().getStringArrayListExtra(EXTRA_IMAGE_URLS);
 
         mPager = (CusViewPager) findViewById(R.id.pager);
-      /*  ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(getSupportFragmentManager(),urls);
-        mPager.setAdapter(imagePagerAdapter);*/
+        ImagePagerAdapter imagePagerAdapter = new ImagePagerAdapter(getSupportFragmentManager(),urls);
+        mPager.setAdapter(imagePagerAdapter);
 
         indicator = (TextView) findViewById(R.id.indicator);
 
-        imageViewList = new ArrayList<View>();
+     /*   imageViewList = new ArrayList<View>();
 
         for (int i = 0; i < urls.size(); i++) {
             String url = urls.get(i);
@@ -90,7 +90,8 @@ public class ImagePagerActivity extends FragmentActivity {
             });
             imageViewList.add(view);
         }
-        mPager.setAdapter(new MyPageAdapter(imageViewList));
+
+        mPager.setAdapter(new MyPageAdapter(imageViewList));*/
         CharSequence text = getString(R.string.viewpager_indicator, pagerPosition + 1, mPager.getAdapter().getCount());
         indicator.setText(text);
         mPager.setCurrentItem(pagerPosition);
@@ -114,7 +115,7 @@ public class ImagePagerActivity extends FragmentActivity {
         });
     }
 
-    /*private class ImagePagerAdapter extends FragmentStatePagerAdapter {
+    private class ImagePagerAdapter extends FragmentStatePagerAdapter {
 
         private ArrayList<String> fileList;
         public ImagePagerAdapter(FragmentManager fm,ArrayList<String> fileList) {
@@ -132,5 +133,5 @@ public class ImagePagerActivity extends FragmentActivity {
         public int getCount() {
             return fileList == null ? 0 : fileList.size();
         }
-    }*/
+    }
 }

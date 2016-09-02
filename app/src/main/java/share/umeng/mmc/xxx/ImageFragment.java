@@ -4,10 +4,10 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -16,7 +16,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
-import photoview.PhotoViewAttacher;
 
 /**
  * Created by abc on 2016/8/22.
@@ -25,9 +24,7 @@ import photoview.PhotoViewAttacher;
 public class ImageFragment extends Fragment{
 	private String mImageUrl;
 	private PhotoView mImageView;
-//	private ImageView mImageView;
 	private ProgressBar progressBar;
-//	    private PhotoViewAttacher mAttacher;
 	public static Fragment newInstance(String url) {
 		ImageFragment fragment = new ImageFragment();
 		Bundle args = new Bundle();
@@ -48,17 +45,6 @@ public class ImageFragment extends Fragment{
 		View view = inflater.inflate(R.layout.image_detail_fragment,container,false);
 		mImageView = (PhotoView) view.findViewById(R.id.image);
 		mImageView.enable();
-		/*mImageView = (ImageView) view.findViewById(R.id.image);
-
-        mAttacher = new PhotoViewAttacher(mImageView);
-
-        mAttacher.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
-
-            @Override
-            public void onPhotoTap(View arg0, float arg1, float arg2) {
-                getActivity().finish();
-            }
-        });*/
 		progressBar = (ProgressBar) view.findViewById(R.id.loading);
 		return view;
 	}
@@ -78,7 +64,6 @@ public class ImageFragment extends Fragment{
 				.bitmapConfig(Bitmap.Config.RGB_565)// 设置最低配置
 				.build();//
 
-//        ImageLoader.getInstance().displayImage(mImageUrl,mImageView,options);
 		ImageLoader.getInstance().displayImage(mImageUrl,mImageView,options,new SimpleImageLoadingListener(){
 			public void onLoadingStarted(String imageUri, View view) {
 				progressBar.setVisibility(View.VISIBLE);
@@ -109,8 +94,14 @@ public class ImageFragment extends Fragment{
 			}
 
 			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+				DisplayMetrics dm = new DisplayMetrics();
+				getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+				int screenWidth = dm.widthPixels;
+				int newHeight =screenWidth*loadedImage.getHeight()/loadedImage.getWidth();
+				Bitmap bitmap = ImageUtils.zoomImg(loadedImage,screenWidth,newHeight);
+				mImageView.setImageBitmap(bitmap);
 				progressBar.setVisibility(View.GONE);
-//                mAttacher.update();
+				mImageView.setVisibility(View.VISIBLE);
 			}
 
 		});
