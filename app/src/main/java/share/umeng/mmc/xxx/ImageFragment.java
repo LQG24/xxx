@@ -23,6 +23,11 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
  */
 public class ImageFragment extends Fragment{
 	private String mImageUrl;
+
+	public PhotoView getmImageView() {
+		return mImageView;
+	}
+
 	private PhotoView mImageView;
 	private ProgressBar progressBar;
 	public static Fragment newInstance(String url) {

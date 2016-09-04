@@ -1,23 +1,15 @@
 package share.umeng.mmc.xxx;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ProgressBar;
+import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +22,7 @@ public class ImagePagerActivity extends FragmentActivity {
     private static final String STATE_POSITION = "STATE_POSITION";
     public static final String EXTRA_IMAGE_INDEX = "image_index";
     public static final String EXTRA_IMAGE_URLS = "image_urls";
+    private ArrayList<Fragment> fragmentArrayList =new ArrayList<Fragment>();
 
     private CusViewPager mPager;
     private int pagerPosition;
@@ -58,6 +51,12 @@ public class ImagePagerActivity extends FragmentActivity {
             String url = urls.get(i);
             View view = LayoutInflater.from(ImagePagerActivity.this).inflate(R.layout.image_detail_fragment, null);
             final PhotoView imageview = (PhotoView) view.findViewById(R.id.image);
+            imageview.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    return false;
+                }
+            });
             imageview.enable();
             final ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.loading);
             ImageLoader.getInstance().displayImage(url, imageview, new SimpleImageLoadingListener() {
@@ -76,6 +75,7 @@ public class ImagePagerActivity extends FragmentActivity {
                     progressBar.setVisibility(View.GONE);
                 }
 
+
                 @Override
                 public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
                     super.onLoadingFailed(imageUri, view, failReason);
@@ -91,12 +91,13 @@ public class ImagePagerActivity extends FragmentActivity {
             imageViewList.add(view);
         }
 
-        mPager.setAdapter(new MyPageAdapter(imageViewList));*/
+        final MyPageAdapter myPageAdapter =new MyPageAdapter(imageViewList);
+        mPager.setAdapter(myPageAdapter);*/
         CharSequence text = getString(R.string.viewpager_indicator, pagerPosition + 1, mPager.getAdapter().getCount());
         indicator.setText(text);
         mPager.setCurrentItem(pagerPosition);
         // 更新下标
-        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -106,6 +107,9 @@ public class ImagePagerActivity extends FragmentActivity {
             public void onPageSelected(int position) {
                 CharSequence text = getString(R.string.viewpager_indicator, position + 1, mPager.getAdapter().getCount());
                 indicator.setText(text);
+//                ((PhotoView)imageViewList.get(position).findViewById(R.id.image)).reset();// 切换还原图片大小
+                ImageFragment imageFragment = (ImageFragment) fragmentArrayList.get(position);
+                imageFragment.getmImageView().reset();    //切换还原图片大小
             }
 
             @Override
@@ -124,9 +128,16 @@ public class ImagePagerActivity extends FragmentActivity {
         }
 
         @Override
+        public void startUpdate(ViewGroup container) {
+            super.startUpdate(container);
+        }
+
+        @Override
         public Fragment getItem(int position) {
             String url = fileList.get(position);
-            return ImageFragment.newInstance(url);
+            ImageFragment imageFragment = (ImageFragment) ImageFragment.newInstance(url);
+            fragmentArrayList.add(imageFragment);
+            return imageFragment;
         }
 
         @Override

@@ -20,8 +20,7 @@ import android.widget.Scroller;
 /**
  * Created by liuheng on 2015/6/21.
  *
- * 20151123 bj 增加长按事件
- * <p></p>
+ *
  *
  */
 public class PhotoView extends ImageView {
