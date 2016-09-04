@@ -38,32 +38,32 @@ public class MainActivity extends AppCompatActivity {
         itemEntities = new ArrayList<ItemEntity>();
         // 1.无图片
         ItemEntity entity1 = new ItemEntity(//
-                "http://img.my.csdn.net/uploads/201410/19/1413698871_3655.jpg", "张三", "今天天气不错...", null);
+                "http://file103.mafengwo.net/s7/M00/17/B6/wKgB6lTBKOOARHKRAAeXvhsqUhg37.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90", "盖伦", "这是凤凰古城呀，挺美的", null);
         itemEntities.add(entity1);
         // 2.1张图片
         ArrayList<String> urls_1 = new ArrayList<String>();
-        urls_1.add("http://img.my.csdn.net/uploads/201410/19/1413698883_5877.jpg");
+        urls_1.add("http://file108.mafengwo.net/s7/M00/17/CA/wKgB6lTBKSiAP3StAAwaYp1SbEM27.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90");
         ItemEntity entity2 = new ItemEntity(//
-                "http://img.my.csdn.net/uploads/201410/19/1413698865_3560.jpg", "李四", "今天雾霾呢...", urls_1);
+                "http://file108.mafengwo.net/s7/M00/17/CA/wKgB6lTBKSiAP3StAAwaYp1SbEM27.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90", "赵信", "这是凤凰古城呀，挺美的", urls_1);
         itemEntities.add(entity2);
         // 3.3张图片
         ArrayList<String> urls_2 = new ArrayList<String>();
-        urls_2.add("http://img.my.csdn.net/uploads/201410/19/1413698867_8323.jpg");
-        urls_2.add("http://img.my.csdn.net/uploads/201410/19/1413698883_5877.jpg");
-        urls_2.add("http://img.my.csdn.net/uploads/201410/19/1413698837_5654.jpg");
+        urls_2.add("http://file108.mafengwo.net/s7/M00/18/19/wKgB6lTBKgKAJKHXAAmCNbruEh029.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90");
+        urls_2.add("http://file107.mafengwo.net/s7/M00/18/47/wKgB6lTBKlyAL4xNAAc9RDAv9ok41.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90");
+        urls_2.add("http://file103.mafengwo.net/s7/M00/17/B6/wKgB6lTBKOOARHKRAAeXvhsqUhg37.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90");
         ItemEntity entity3 = new ItemEntity(//
-                "http://img.my.csdn.net/uploads/201410/19/1413698837_5654.jpg", "王五", "今天好大的太阳...", urls_2);
+                "http://file107.mafengwo.net/s7/M00/18/47/wKgB6lTBKlyAL4xNAAc9RDAv9ok41.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90", "蛮王", "凤凰古城", urls_2);
         itemEntities.add(entity3);
         // 4.6张图片
         ArrayList<String> urls_3 = new ArrayList<String>();
-        urls_3.add("http://img.my.csdn.net/uploads/201410/19/1413698837_7507.jpg");
-        urls_3.add("http://img.my.csdn.net/uploads/201410/19/1413698865_3560.jpg");
-        urls_3.add("http://img.my.csdn.net/uploads/201410/19/1413698867_8323.jpg");
-        urls_3.add("http://img.my.csdn.net/uploads/201410/19/1413698837_5654.jpg");
-        urls_3.add("http://img.my.csdn.net/uploads/201410/19/1413698883_5877.jpg");
-        urls_3.add("http://img.my.csdn.net/uploads/201410/19/1413698839_2302.jpg");
+        urls_3.add("http://file102.mafengwo.net/s9/M00/8A/42/wKgBs1ahFI-AfNltAANL5B_D6Ag06.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90");
+        urls_3.add("http://file105.mafengwo.net/s9/M00/8A/3F/wKgBs1ahFIWAbJ_lAAPxlQZ8xnk99.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90");
+        urls_3.add("http://file102.mafengwo.net/s5/M00/D2/3A/wKgB3FHahUKAP928AAUQPifQcZ003.jpeg?imageView2%2F2%2Fw%2F310%2Fh%2F9999%2Fq%2F90%7Cwatermark%2F1%2Fimage%2FaHR0cDovL2ZpbGUxMTEubWFmZW5nd28ubmV0L3M5L00wMC9BRS9GNC93S2dCczFjSGtRLUFFRHN0QUFBVU16WWpyNE03NjYucG5n");
+        urls_3.add("http://file107.mafengwo.net/s6/M00/FC/72/wKgB4lL1BL6AT1IvAAiL8ZID4lo08.jpeg?imageView2%2F2%2Fw%2F310%2Fh%2F9999%2Fq%2F90%7Cwatermark%2F1%2Fimage%2FaHR0cDovL2ZpbGUxMTEubWFmZW5nd28ubmV0L3M5L00wMC9BRS9GNC93S2dCczFjSGtRLUFFRHN0QUFBVU16WWpyNE03NjYucG5n");
+        urls_3.add("http://file102.mafengwo.net/s5/M00/54/AD/wKgB3FE8MW2AWxOoAA_K2YjGdxI15.jpeg?imageView2%2F2%2Fw%2F310%2Fh%2F9999%2Fq%2F90%7Cwatermark%2F1%2Fimage%2FaHR0cDovL2ZpbGUxMTEubWFmZW5nd28ubmV0L3M5L00wMC9BRS9GNC93S2dCczFjSGtRLUFFRHN0QUFBVU16WWpyNE03NjYucG5n");
+        urls_3.add("http://file106.mafengwo.net/s6/M00/38/EB/wKgB4lKmoyOAdJwWAAyyRmElAAY57.jpeg?imageView2%2F2%2Fw%2F310%2Fh%2F9999%2Fq%2F90%7Cwatermark%2F1%2Fimage%2FaHR0cDovL2ZpbGUxMTEubWFmZW5nd28ubmV0L3M5L00wMC9BRS9GNC93S2dCczFjSGtRLUFFRHN0QUFBVU16WWpyNE03NjYucG5n");
         ItemEntity entity4 = new ItemEntity(//
-                "http://img.my.csdn.net/uploads/201410/19/1413698883_5877.jpg", "赵六", "今天下雨了...", urls_3);
+                "http://file102.mafengwo.net/s9/M00/8A/42/wKgBs1ahFI-AfNltAANL5B_D6Ag06.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90", "寒冰", "丽江真美，好想去...", urls_3);
         itemEntities.add(entity4);
     }
 }
